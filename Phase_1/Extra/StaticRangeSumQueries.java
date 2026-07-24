@@ -12,14 +12,11 @@ public class StaticRangeSumQueries {
             arr[i] = arr[i-1] +  sc.nextInt();
         }
 
-        for (int i = 0; i < q; i++) {
+        while(q-- > 0) {
             int a = sc.nextInt();
             int b = sc.nextInt();
 
-            int sum = arr[b] - arr[a-1];
-
-            System.out.println(sum);
-
+            System.out.println(arr[b] - arr[a-1]);
         }
 
         sc.close();
