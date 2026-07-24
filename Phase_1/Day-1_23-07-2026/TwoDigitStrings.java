@@ -60,7 +60,7 @@ public class TwoDigitStrings {
         int N = sc.nextInt();
         sc.nextLine();
         
-        String[][] arr = new String[N+1][3];
+        String[][] arr = new String[N+1][2];
         
         for(int i = 0; i < N; i++) {
             arr[i][0] = sc.nextLine();
