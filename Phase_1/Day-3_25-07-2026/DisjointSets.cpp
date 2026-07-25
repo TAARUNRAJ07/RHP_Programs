@@ -13,7 +13,7 @@ int find(vector<int> &leader, int a) {
 void join(vector<int>& ldr, int a, int b) {
     int ldrA = find(ldr, a);
     int ldrB = find(ldr, b);
-    ldr[ldrA] = ldrB;
+    ldr[ldrB] = ldrA;
 }
 
 int main() {
