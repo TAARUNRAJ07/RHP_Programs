@@ -1,4 +1,4 @@
-class LastDayWhereStillYouCanCross {
+class LastDayWhereYouCanStillCross {
 
     private int gci(int row, int col, int C) {
         return row * C + col + 1;
