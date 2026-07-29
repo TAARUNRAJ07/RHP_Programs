@@ -13,6 +13,7 @@ public class NumberOfProvinces {
     private void join(int[] ldr, int lt, int rt) {
         ldr[find(ldr, rt)] = find(ldr, lt);
     }
+    
     public int findCircleNum(int[][] g) {
         int N =g.length;
         int[] ldr = new int[N+1];

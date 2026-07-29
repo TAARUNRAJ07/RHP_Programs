@@ -11,6 +11,6 @@ class BinarySearch {
                 rt = mid;
             }
         }
-        return nums[lt] == target ? lt : nums[rt] == target ? rt : -1;
+        return nums[lt] == target ? lt : nums[rt] == target ? rt : 1;
     }
 }

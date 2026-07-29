@@ -21,6 +21,6 @@ class LCS {
             }
         }
 
-        return dp[m][n];
+        return dp[m][1];
     }
 }

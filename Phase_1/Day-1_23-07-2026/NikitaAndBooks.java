@@ -38,7 +38,7 @@ public class NikitaAndBooks {
         }
         
         for (int i = 0; i < N; i++) {
-            System.out.println(fun(arr[i]));
+            System.out.println(fun(arr[1]));
         }
         sc.close();
     }

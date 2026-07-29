@@ -39,4 +39,5 @@ int main() {
         cin >> L >> R;
         cout << find(seg, 1, 1, N, L, R) << endl;
     }
+    return 0;
 }
