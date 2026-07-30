@@ -3,7 +3,7 @@ import java.util.*;
 
 public class RottingOranges {
 
-    public int orangesRotting(int[][] grid) {
+    public static int orangesRotting(int[][] grid) {
         int R = grid.length, C = grid[0].length, oranges = 0, ans = 0;
 
         Queue<int[]> q = new LinkedList<>();
@@ -34,5 +34,21 @@ public class RottingOranges {
             }
         }
         return oranges == 0 ? ans : -1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int M = sc.nextInt();
+        int N = sc.nextInt();
+
+        int[][] grid = new int[M][N];
+
+        for (int i = 0; i < M; i++) {
+            for (int j = 0; j < N; j++) {
+                grid[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println(orangesRotting(grid));
     }
 }
