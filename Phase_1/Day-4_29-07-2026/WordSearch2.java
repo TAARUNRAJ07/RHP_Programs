@@ -1,43 +1,59 @@
 import java.util.*;
 
+class Trie {
+    String word;
+    Trie chars[] = new Trie[26];
+}
 public class WordSearch2 {
-    private static boolean dfs(char[][] board, String word, int R, int C, int r, int c, int k) {
-        if (k == word.length()) {
-            return true;
-        }
 
-        char backup = board[r][c];
-        board[r][c] = '$';
+    private void buildTrie(Trie t, String word, int idx) {
+        if (idx == word.length()) return;
 
-        int[] diff = {0, 1, 0, -1, 0};
-        
-        for (int i = 0; i < 4; i++) {
-            int ar = r + diff[i];
-            int ac = c + diff[i+1];
-            if (ar >= 0 && ar < R && ac >= 0 && ac < C && backup == word.charAt(k)) {
-                boolean flag = dfs(board, word, R, C, ar, ac, k+1);
-                if (flag) return true;
-            }
+        int chidx = word.charAt(idx) - 'a';
+        if (t.chars[chidx] == null) {
+            t.chars[chidx] = new Trie();
         }
-        board[r][c] = backup;
-        return false;
+        Trie ct = t.chars[chidx];
+        if (idx == word.length() - 1) {
+            ct.word = word;
+        }
+        buildTrie(ct, word, idx + 1);
+    }
+
+    int[] d = {0, 1, 0, -1, 0};
+    private static boolean dfs(char[][] board, String word, List<String> res, Trie t, int R, int C, int r, int c, int k) {
+        // if (r-1 >= 0 && r-1 < R && c >= 0 && c < C && board[r-1][c] == word.charAt(k+1)) {
+        //     dfs(board, word, R, C, r-1, c, k+1);
+        // }
+        // if (r >= 0 && r < R && c+1 >= 0 && c+1 < C && board[r][c+1] == word.charAt(k+1)) {
+        //     dfs(board, word, R, C, r, c+1, k+1);
+        // }
+        // if (r+1 >= 0 && r+1 < R && c >= 0 && c < C && board[r+1][c] == word.charAt(k+1)) {
+        //     dfs(board, word, R, C, r+1, c, k+1);
+        // }
+        // if (r >= 0 && r < R && c-1 >= 0 && c-1 < C &&board[r][c-1] == word.charAt(k+1)) {
+        //     dfs(board, word, R, C, r, c-1, k+1);
+        // }
+
+        return true;
     }
     
     public List<String> findWords(char[][] board, String[] words) {
-        int R = board.length, C = board[0].length, L = words.length;
 
+        Trie root = new Trie();
+        for (String w : words) buildTrie(root, w, 0);
+
+        int R = board.length, C = board[0].length, L = words.length;
+        boolean vis[][] = new boolean[R][C];
         List<String> res = new ArrayList<>();
 
-        for (int k = 0; k < L; k++) {
-            for (int i = 0; i < R; i++) {
-                for (int j = 0; j < C; j++) {
-                    if (board[i][j] == words[k].charAt(0)) {
-                        boolean flag = dfs(board, words[k], R, C, i, j, 1);
-                        if (flag) res.add(words[k]);
-                    }
-                }
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) {
+                dfs(board, words[0], res, root, R, C, i, j, 1);
+
             }
         }
+        
         return res;
     }
 }

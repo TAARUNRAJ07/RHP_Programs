@@ -6,34 +6,29 @@ public class WordSearch {
             return true;
         }
 
+        if (r < 0 || r >= R || c < 0 || c >= C || board[r][c] != word.charAt(k)) {
+            return false;
+        }
+
         char backup = board[r][c];
         board[r][c] = '$';
 
-        int[] diff = {0, 1, 0, -1, 0};
-        
-        for (int i = 0; i < 4; i++) {
-            int ar = r + diff[i], ac = c + diff[i+1];
-            if (ar >= 0 && ar < R && ac >= 0 && ac < C && backup == word.charAt(k)) {
-                boolean flag = dfs(board, word, R, C, ar, ac, k+1);
-                if (flag) return true;
-            }
-        }
+        boolean found = dfs(board, word, R, C, r+1, c, k+1) || dfs(board, word, R, C, r-1, c, k+1) || dfs(board, word, R, C, r, c+1, k+1) || dfs(board, word, R, C, r, c-1, k+1);
+
         board[r][c] = backup;
-        return false;
+        return found;
     }
+    
     public boolean exist(char[][] board, String word) {
         boolean flag = false;
         int R = board.length, C = board[0].length;
 
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) {
-                if (board[i][j] == word.charAt(0)) {
-                    flag = dfs(board, word, R, C, i, j, 1);
-                    if (flag) return true;
-                }
+                flag = dfs(board, word, R, C, i, j, 0);
+                if (flag) return true;
             }
         }
-
         return false;
     }
 }
