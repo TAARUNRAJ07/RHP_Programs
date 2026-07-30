@@ -50,5 +50,7 @@ public class RottingOranges {
         }
 
         System.out.println(orangesRotting(grid));
+
+        sc.close();
     }
 }
