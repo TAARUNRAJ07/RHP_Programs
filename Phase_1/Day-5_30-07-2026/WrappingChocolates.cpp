@@ -11,8 +11,9 @@ int main()
     cin >> N >> M;
 
     vector<int> B(N + 1), D(M + 1);
-    vector<pair<int, int>> wv(N + M);
-
+    vector<pair<int, int>> wv;
+    wv.reserve(N + M);
+    
     for (int i = 1; i <= N; i++)
     {
         int val;

@@ -22,19 +22,6 @@ public class WordSearch2 {
 
     int[] d = {0, 1, 0, -1, 0};
     private static boolean dfs(char[][] board, String word, List<String> res, Trie t, int R, int C, int r, int c, int k) {
-        // if (r-1 >= 0 && r-1 < R && c >= 0 && c < C && board[r-1][c] == word.charAt(k+1)) {
-        //     dfs(board, word, R, C, r-1, c, k+1);
-        // }
-        // if (r >= 0 && r < R && c+1 >= 0 && c+1 < C && board[r][c+1] == word.charAt(k+1)) {
-        //     dfs(board, word, R, C, r, c+1, k+1);
-        // }
-        // if (r+1 >= 0 && r+1 < R && c >= 0 && c < C && board[r+1][c] == word.charAt(k+1)) {
-        //     dfs(board, word, R, C, r+1, c, k+1);
-        // }
-        // if (r >= 0 && r < R && c-1 >= 0 && c-1 < C &&board[r][c-1] == word.charAt(k+1)) {
-        //     dfs(board, word, R, C, r, c-1, k+1);
-        // }
-
         return true;
     }
     
