@@ -22,5 +22,6 @@ class ChangeSchools {
                 ans++;
         }
         System.out.println(ans);
+        sc.close();
     }
 }

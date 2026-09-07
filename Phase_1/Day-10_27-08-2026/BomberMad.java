@@ -59,5 +59,7 @@ class BomberMad {
             round++;
         }
         System.out.println(ans);
+
+        sc.close();
     }
 }

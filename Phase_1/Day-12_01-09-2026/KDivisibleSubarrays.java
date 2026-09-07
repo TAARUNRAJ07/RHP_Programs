@@ -19,6 +19,6 @@ class KDivisibleSubarrays {
             m.put(rem,  i);
         }
         System.out.println(arr[n]);
-
+        sc.close();
     }
 }
