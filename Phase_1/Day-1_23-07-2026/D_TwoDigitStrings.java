@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TwoDigitStrings {
+public class D_TwoDigitStrings {
     
     public static int longestCommonSubsequence(int[] x, int[] y) {
 

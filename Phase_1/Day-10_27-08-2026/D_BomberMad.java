@@ -8,7 +8,7 @@ class Pair {
     }
 }
 
-class BomberMad {
+class D_BomberMad {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int R = sc.nextInt();

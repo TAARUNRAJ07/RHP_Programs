@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class LazyFaith {
+public class D_LazyFaith {
 
     static final long INF = 1_000_000_000_000L;
 

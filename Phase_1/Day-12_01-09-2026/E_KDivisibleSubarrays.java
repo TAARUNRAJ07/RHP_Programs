@@ -1,5 +1,5 @@
 import java.util.*;
-class KDivisibleSubarrays {
+class E_KDivisibleSubarrays {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();

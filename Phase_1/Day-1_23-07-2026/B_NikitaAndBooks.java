@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class NikitaAndBooks {
+public class B_NikitaAndBooks {
     public static String fun(int[] l) {
         int bal = 0;
         for (int i = 1; i < l.length; i++) {

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class IHateSigmaProblems {
+public class E_IHateSigmaProblems {
     public static long calculateDistinctSum(long[] arr, int N) {
         long sum = 0, lSum = 0;
         HashMap<Long, Integer> Prev = new HashMap<>();
