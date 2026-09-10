@@ -10,24 +10,24 @@ using namespace std;
 
 void solve()
 {
-    int x, y;
-    cin >> x >> y;
-    int sum = x + y, rx = 0, ry = 0;
+    int X, Y;
+    cin >> X >> Y;
+    int sum = X + Y, rX = 0, rY = 0;
     for (int i = 30; i >= 0; i--)
     {
         if ((sum & (1 << i)) != 0)
         {
-            if ((rx | (1 << i)) <= x)
+            if ((rX | (1 << i)) <= X)
             {
-                rx = rx | (1 << i);
+                rX = rX | (1 << i);
             }
             else
             {
-                ry = ry | (1 << i);
+                rY = rY | (1 << i);
             }
         }
     }
-    cout << sum << " " << x - rx << endl;
+    cout << sum << " " << X - rX << endl;
 }
 
 int main()
