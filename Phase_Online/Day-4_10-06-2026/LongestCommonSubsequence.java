@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class LongestCommonSubsequence  {
 
     public static int longestCommonSubsequence(String text1, String text2) {
 

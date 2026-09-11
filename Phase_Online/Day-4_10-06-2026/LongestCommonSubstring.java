@@ -1,5 +1,3 @@
-import java.util.*;
-
 class LongestCommonSubstring {
 
     public static void lcs(String str1,String str2) {

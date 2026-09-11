@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MaximumValueRowWise {
+public class MaxValueRowWise {
 
     static long[] getFSmax(long[][] c, int row, int m) {
         long fmax = Long.MIN_VALUE;
