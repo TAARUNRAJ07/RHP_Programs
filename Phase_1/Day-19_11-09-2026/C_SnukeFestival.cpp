@@ -26,28 +26,41 @@ void solve()
 
     vector<ll> pSum(N, 0);
 
+    // for (int i = 0; i < N; i++)
+    // {
+    //     auto it = upper_bound(C.begin(), C.end(), B[i]);
+    //     if (it != C.end())
+    //     {
+    //         pSum[i] = C.end() - it;
+    //     }
+    // }
+
+    // for (int i = 1; i < N; i++)
+    // {
+    //     pSum[i] += pSum[i - 1];
+    // }
+
+    // ll ans = 0;
+    // for (int i = 0; i < N; i++)
+    // {
+    //     auto it = upper_bound(B.begin(), B.end(), A[i]);
+    //     if (it != B.end())
+    //     {
+    //         int m = it - B.begin();
+    //         ans += pSum[N - 1] - (m == 0 ? 0 : pSum[m - 1]);
+    //     }
+    // }
+    ll ans = 0;
+
     for (int i = 0; i < N; i++)
     {
         auto it = upper_bound(C.begin(), C.end(), B[i]);
-        if (it != C.end())
+        auto at = lower_bound(A.begin(), A.end(), B[i]);
+        if (it != C.end() || at != A.end())
         {
-            pSum[i] = C.end() - it;
-        }
-    }
-
-    for (int i = 1; i < N; i++)
-    {
-        pSum[i] += pSum[i - 1];
-    }
-
-    ll ans = 0;
-    for (int i = 0; i < N; i++)
-    {
-        auto it = upper_bound(B.begin(), B.end(), A[i]);
-        if (it != B.end())
-        {
-            int m = it - B.begin();
-            ans += pSum[N - 1] - (m == 0 ? 0 : pSum[m - 1]);
+            int a = C.end() - it + 1;
+            int b = at - A.begin() + 1;
+            ans += (ll)(a + b);
         }
     }
     cout << ans << endl;
