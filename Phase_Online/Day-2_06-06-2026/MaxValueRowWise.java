@@ -39,11 +39,11 @@ public class MaxValueRowWise {
         }
 
         for (int i = 1; i < n; i++) {
-            long[] fmax = getFSmax(c, i - 1, m);
+            long[] fsmax = getFSmax(c, i - 1, m);
 
             for (int j = 0; j < m; j++) {
                 c[i][j] = a[i][j]
-                        + (c[i - 1][j] == fmax[0] ? fmax[1] : fmax[0]);
+                        + (c[i - 1][j] == fsmax[0] ? fsmax[1] : fsmax[0]);
             }
         }
 
