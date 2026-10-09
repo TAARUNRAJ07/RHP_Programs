@@ -140,20 +140,12 @@ public class SofaProblem {
                 }
                 
                 // Rotation using the 2x2 square on the left
-                if (s.fsr < R - 1 && s.fsc > 0&& grid[s.fsr][s.fsc - 1] != 'H' && grid[s.ssr][s.fsc - 1] != 'H' && grid[s.ssr][s.ssc] != 'H') {
-
-                    if (canAdd(s.fsr, s.fsc - 1,
-                               s.fsr, s.fsc, visited)) {
-                        queue.add(new Sofa(s.fsr, s.fsc - 1,
-                                       s.fsr, s.fsc, 'H',
-                                       s.moves + 1));
+                if (s.fsr > 0 && s.fsc > 0 && grid[s.fsr][s.fsc - 1] != 'H' && grid[s.ssr][s.fsc - 1] != 'H' && grid[s.ssr][s.ssc] != 'H') {
+                    if (canAdd(s.fsr, s.fsc - 1, s.fsr, s.fsc, visited)) {
+                        queue.add(new Sofa(s.fsr, s.fsc - 1, s.fsr, s.fsc, 'H', s.moves + 1));
                     }
-
-                    if (canAdd(s.ssr, s.fsc - 1,
-                               s.ssr, s.fsc, visited)) {
-                        queue.add(new Sofa(s.ssr, s.fsc - 1,
-                                       s.ssr, s.fsc, 'H',
-                                       s.moves + 1));
+                    if (canAdd(s.ssr, s.fsc - 1, s.ssr, s.fsc, visited)) {
+                        queue.add(new Sofa(s.ssr, s.fsc - 1, s.ssr, s.fsc, 'H', s.moves + 1));
                     }
                 }
 
@@ -174,16 +166,16 @@ public class SofaProblem {
     }
 
     static final String DELIM = "|";
-    private static boolean canAdd(int fsr, int fsc, int ssr, int ssc, Set<String> v
+    private static boolean canAdd(int fsr, int fsc, int ssr, int ssc, Set<String> visited
     ) {
         StringBuilder sb = new StringBuilder();
         sb.append(fsr).append(DELIM).append(fsc).append(DELIM);
         sb.append(ssr).append(DELIM).append(ssc);
         String key = sb.toString();
-        if (v.contains(key)) {
+        if (visited.contains(key)) {
             return false;
         }
-        v.add(key);
+        visited.add(key);
         return true;
     }
 }
