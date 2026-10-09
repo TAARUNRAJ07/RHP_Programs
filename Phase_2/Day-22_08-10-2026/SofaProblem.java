@@ -94,7 +94,7 @@ public class SofaProblem {
                         queue.add(new Sofa(s.ssr-1, s.ssc, s.ssr, s.ssc, 'V', s.moves + 1));
                     }
                     //Second seat is going to the top of first seat anti-clockwise
-                    if (canAdd(s.fsr, s.fsc, s.fsr - 1, s.fsc, visited )) {
+                    if (canAdd(s.fsr, s.fsc, s.fsr - 1, s.fsc, visited)) {
                         queue.add(new Sofa(s.fsr, s.fsc, s.fsr - 1, s.fsc, 'V', s.moves + 1));
                     }
                 }
@@ -104,29 +104,86 @@ public class SofaProblem {
                         queue.add(new Sofa(s.ssr + 1, s.ssc, s.ssr, s.ssc, 'V', s.moves + 1));
                     }
                     //Second seat is going to the bottom of first seat clockwise
-                    if (canAdd(s.fsr, s.fsc, s.fsr + 1, s.fsc, visited )) {
+                    if (canAdd(s.fsr, s.fsc, s.fsr + 1, s.fsc, visited)) {  
                         queue.add(new Sofa(s.fsr, s.fsc, s.fsr + 1, s.fsc, 'V', s.moves + 1));
                     }
                 }
 
             }
+            else{
+				// drag right
+                if (s.fsc < C - 1 && grid[s.fsr][s.fsc + 1] != 'H' && grid[s.ssr][s.ssc + 1] != 'H') {
+                    if (canAdd(s.fsr, s.fsc + 1, s.ssr, s.ssc + 1, visited)) {
+                        queue.add(new Sofa(s.fsr, s.fsc + 1, s.ssr, s.ssc + 1,'V', s.moves + 1));
+                    }
+                }
 
+                // drag left
+                if (s.fsc > 0 && grid[s.fsr][s.fsc - 1] != 'H' && grid[s.ssr][s.ssc - 1] != 'H') {
+                    if (canAdd(s.fsr, s.fsc - 1, s.ssr, s.ssc - 1, visited)){
+                        queue.add(new Sofa(s.fsr, s.fsc - 1, s.ssr, s.ssc - 1, 'V', s.moves + 1));
+                    }
+                }
+
+                // drag up
+                if (s.fsr > 0 && grid[s.fsr - 1][s.fsc] != 'H') {
+                    if (canAdd(s.fsr - 1, s.fsc, s.ssr - 1, s.ssc, visited)) {
+                        queue.add(new Sofa(s.fsr - 1, s.fsc,s.ssr - 1, s.ssc,'V', s.moves + 1));
+                    }
+                }
+
+                // drag down
+                if (s.ssr < R - 1 && grid[s.ssr + 1][s.ssc] != 'H') {
+                    if (canAdd(s.fsr + 1, s.fsc, s.ssr + 1, s.ssc, visited)) {
+                        queue.add(new Sofa(s.fsr + 1, s.fsc, s.ssr + 1, s.ssc,'V', s.moves + 1));
+                    }
+                }
+                
+                // Rotation using the 2x2 square on the left
+                if (s.fsr < R - 1 && s.fsc > 0&& grid[s.fsr][s.fsc - 1] != 'H' && grid[s.ssr][s.fsc - 1] != 'H' && grid[s.ssr][s.ssc] != 'H') {
+
+                    if (canAdd(s.fsr, s.fsc - 1,
+                               s.fsr, s.fsc, visited)) {
+                        queue.add(new Sofa(s.fsr, s.fsc - 1,
+                                       s.fsr, s.fsc, 'H',
+                                       s.moves + 1));
+                    }
+
+                    if (canAdd(s.ssr, s.fsc - 1,
+                               s.ssr, s.fsc, visited)) {
+                        queue.add(new Sofa(s.ssr, s.fsc - 1,
+                                       s.ssr, s.fsc, 'H',
+                                       s.moves + 1));
+                    }
+                }
+
+                // Rotation 
+                if (s.fsr < R - 1 && s.fsc < C - 1 && grid[s.fsr][s.fsc + 1] != 'H' && grid[s.ssr][s.fsc + 1] != 'H' && grid[s.ssr][s.ssc] != 'H') {
+                    if (canAdd(s.fsr, s.fsc, s.fsr, s.fsc + 1, visited)) {
+                        queue.add(new Sofa(s.fsr, s.fsc, s.fsr, s.fsc + 1, 'H', s.moves + 1));
+                    }
+                    if (canAdd(s.ssr, s.fsc, s.ssr, s.fsc + 1, visited)) {
+                        queue.add(new Sofa(s.ssr, s.fsc, s.ssr, s.fsc + 1, 'H', s.moves + 1));
+                    }
+                }
+
+            }
         }
-
         System.out.println("Impossible");
         sc.close();
     }
 
     static final String DELIM = "|";
-    private static boolean canAdd(int fsr, int fsc, int ssr, int ssc, Set<String> visited) {
+    private static boolean canAdd(int fsr, int fsc, int ssr, int ssc, Set<String> v
+    ) {
         StringBuilder sb = new StringBuilder();
         sb.append(fsr).append(DELIM).append(fsc).append(DELIM);
         sb.append(ssr).append(DELIM).append(ssc);
         String key = sb.toString();
-        if (visited.contains(key)) {
+        if (v.contains(key)) {
             return false;
         }
-        visited.add(key);
+        v.add(key);
         return true;
     }
 }
