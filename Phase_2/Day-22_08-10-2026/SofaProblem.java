@@ -21,12 +21,12 @@ class Sofa {
 
 public class SofaProblem {
     public static void main(String[] args) {
-       Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int R = sc.nextInt();
         int C = sc.nextInt();
         char grid[][] = new char[R][C];
 
-        int fsr, fsc, ssr, ssc, sofaCount = 0;
+        int fsr = -1, fsc = -1, ssr = -1, ssc = -1, sofaCount = 0;
 
         Queue<Sofa> queue = new LinkedList<>();
 
